@@ -1,0 +1,12 @@
+<div class="col-8">
+  <%= simple_form_for (profile) do |f| %>
+  <%= f.input :full_name %>
+  <%= f.input :current_role %>
+  <%= f.input :description %>
+  <%= f.input :github_username %>
+  <%= f.input :slack_username %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit "Finish Profile", class: "btn btn-primary btn-block mb-5" %>
+  <% end %>
+</div>

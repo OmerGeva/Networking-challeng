@@ -1,0 +1,38 @@
+<div class="container mt-3">
+
+
+  <% if @profile == current_user.profile %>
+    <div class="d-flex justify-content-center">
+      <h1 class="text-center"> Your Profile </h1>
+      <%= cl_image_tag current_user.profile.photo, class: 'avatar' %>
+    </div>
+    <div class="d-flex justify-content-between mb-5">
+      <%= link_to 'Add a skill', new_profile_skill_path, class: "btn btn-primary" %>
+      <%= link_to 'Edit my profile', edit_profile_path(current_user.profile), class: "btn btn-primary" %>
+    </div>
+  <% else %>
+    <h1 class="text-center"><%= @profile.full_name %></h1>
+  <% end %>
+  <div class="d-flex justify-content-around">
+    <div>
+      <h2 class="border-bottom">Profile Description</h2>
+      <p><%= @profile.description %></p>
+    </div>
+    <div>
+      <h2 class="border-bottom">Skills:</h2>
+      <ul>
+        <% @profile.profile_skills.each do |profile_skill| %>
+          <li><%= profile_skill.skill.title %> - <%= profile_skill.experience %></li>
+        <% end  %>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-5 text-center">
+
+    <p>Find me on slack: @<%= @profile.slack_username %></p>
+    <%= link_to "https://github.com/#{@profile.github_username}"  do%>
+    <i class="fab fa-github"></i> <%= @profile.github_username %>
+    <% end %>
+  </div>
+
+</div>

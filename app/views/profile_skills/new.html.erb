@@ -1,0 +1,8 @@
+<div class="col-8">
+  <h1>Add a skill:</h1>
+  <%= simple_form_for (@profile_skill) do |f| %>
+  <%= f.input :experience %>
+  <%= f.input :skill %>
+  <%= f.submit "Make skill", class: "btn btn-primary btn-block mb-5" %>
+  <% end %>
+</div>

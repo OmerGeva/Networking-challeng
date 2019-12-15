@@ -1,0 +1,36 @@
+
+<div class="container mt-5">
+  <%= form_tag search_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a profile"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+  <div class="grid">
+    <div class="row">
+      <% @profiles.each do |profile| %>
+        <div class="col-6">
+          <%= link_to profile_path(profile)  do%>
+            <div class="card-profile m-2">
+              <% if profile.photo %>
+                <%= cl_image_tag profile.photo, height: 300, width: 400, crop: :fill %>
+
+              <% else %>
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <% end %>
+              <div class="card-profile-infos">
+                <h2><%= profile.full_name %></h2>
+                <p> <%= profile.current_role %> </p>
+                <p> <%= profile.description %> </p>
+                <p> <%= profile.slack_username %> </p>
+                <p> <%= profile.github_username %> </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
