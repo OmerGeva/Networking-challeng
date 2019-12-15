@@ -9,10 +9,14 @@ class ProfileSkillsController < ApplicationController
     else
       skill = Skill.find_by(title: params[:profile_skill][:skill])
     end
-    profile_skill = ProfileSkill.new(experience: params[:profile_skill][:experience], profile: current_user.profile)
-    profile_skill.skill = skill
-    profile_skill.save!
+    @profile_skill = ProfileSkill.new(experience: params[:profile_skill][:experience], profile: current_user.profile)
+    @profile_skill.skill = skill
+    if @profile_skill.save
+      redirect_to profile_path(current_user.profile)
+    else
+      render :new
+    end
 
-    redirect_to profile_path(current_user.profile)
+
   end
 end
