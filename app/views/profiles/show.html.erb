@@ -29,7 +29,7 @@
   </div>
   <div class="mt-5 text-center">
 
-    <p>Find me on slack: @<%= @profile.slack_username %></p>
+    <p><i class="fab fa-slack"> Find me on slack: </i> @<%= @profile.slack_username %></p>
     <%= link_to "https://github.com/#{@profile.github_username}"  do%>
     <i class="fab fa-github"></i> <%= @profile.github_username %>
     <% end %>
